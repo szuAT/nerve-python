@@ -37,6 +37,7 @@ from nerve_clt.control_workloads import (
 )
 import sys
 from argparse import RawTextHelpFormatter
+from pathlib import Path
 
 help_text = """
 Nerve Management System CLI
@@ -94,7 +95,7 @@ def main():
     # Set login credentials
     parser_set_login = subparsers.add_parser('set_login',
         help='Checks and sets login credentials. Uses file, enviroment vars or propmt.')
-    parser_set_login.add_argument("-f", "--file", default="credentials.ini",
+    parser_set_login.add_argument("-f", "--file", default=str(Path.home().joinpath(".nerve_clt", "credentials.ini")),
         help="Take the file and use it to get the credentials. '.ini' is automatically appended.")
     parser_set_login.add_argument("-u", '--url',
         help='Enter the Nerve Management System URL. "https://" is added if the url does not start with "http".')
