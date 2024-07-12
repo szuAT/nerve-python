@@ -22,9 +22,11 @@ import configparser
 import json
 import re
 import pprint
+import os
+from pathlib import Path
 
 
-def save_credentials(url: str, username: str, password: str, filename: str = 'credentials.ini'):
+def save_credentials(url: str, username: str, password: str, filename: str = str(Path.home().joinpath(".nerve_clt", "credentials.ini"))):
     """Saves API credentials to a file.
 
     Parameters:
@@ -42,11 +44,14 @@ def save_credentials(url: str, username: str, password: str, filename: str = 'cr
     if password:
         config['Credentials']['password'] = password
 
+    if not os.path.exists(os.path.dirname(filename)):
+        os.makedirs(os.path.dirname(filename))
+
     with open(filename, 'w') as configfile:
         config.write(configfile)
 
 
-def load_credentials_from_file(filename: str = 'credentials.ini') -> tuple:
+def load_credentials_from_file(filename: str = str(Path.home().joinpath(".nerve_clt", "credentials.ini"))) -> tuple:
     """Loads API credentials from a file.
 
     Parameters:
@@ -68,7 +73,7 @@ def load_credentials_from_file(filename: str = 'credentials.ini') -> tuple:
     return url, username, password
 
 
-def load_session_id(filename: str = 'session_id.ini') -> tuple:
+def load_session_id(filename: str = str(Path.home().joinpath(".nerve_clt", "session_id.ini"))) -> tuple:
     """Loads the session ID from a file.
 
     Parameters:
@@ -110,7 +115,7 @@ def load_json(filename: str):
         return json.load(input_file)
 
 
-def save_session_id(session_id: str, base_url: str, filename: str = 'session_id.ini'):
+def save_session_id(session_id: str, base_url: str, filename: str = str(Path.home().joinpath(".nerve_clt", "session_id.ini"))):
     """Saves the session ID and the base URL to a file.
 
     Parameters:
@@ -228,7 +233,7 @@ def complainIfNotAList(d, length=None):
     """
     if not isinstance(d, list):
         raise DataNotAsExpected(f"Expected a list, got {type(d)}")
-    
+
     if length is not None and len(d) != length:
         raise DataNotAsExpected(f"Expected a list of length {length}, got {len(d)}")
 
