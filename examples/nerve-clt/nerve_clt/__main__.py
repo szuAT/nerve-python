@@ -1,3 +1,3 @@
-from .clt import main
+from nerve_clt.clt import main
 
 main()

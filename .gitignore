@@ -2,6 +2,8 @@ n_venv/
 
 .venv/
 
+**/__pycache__
+
 build/
 **/dist
 

@@ -19,18 +19,18 @@
 """Main Command Line Interface."""
 
 import argparse
-from .set_login import handle_set_login
-from .logout import handle_logout
-from .list_workloads import handle_workloads_list
-from .create_workload import handle_create_workload
-from .create_label import handle_create_label
-from .get_labels import handle_get_labels
-from .delete_label import handle_delete_label
-from .delete_workload import handle_delete_workload
-from .create_wl_template import handle_create_wl_template
-from .list_nodes import handle_list_nodes
-from .reboot_nodes import handle_reboot_nodes
-from .control_workloads import (
+from nerve_clt.set_login import handle_set_login
+from nerve_clt.logout import handle_logout
+from nerve_clt.list_workloads import handle_workloads_list
+from nerve_clt.create_workload import handle_create_workload
+from nerve_clt.create_label import handle_create_label
+from nerve_clt.get_labels import handle_get_labels
+from nerve_clt.delete_label import handle_delete_label
+from nerve_clt.delete_workload import handle_delete_workload
+from nerve_clt.create_wl_template import handle_create_wl_template
+from nerve_clt.list_nodes import handle_list_nodes
+from nerve_clt.reboot_nodes import handle_reboot_nodes
+from nerve_clt.control_workloads import (
     handle_start_workloads,
     handle_stop_workloads,
     handle_restart_workloads
