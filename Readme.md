@@ -10,35 +10,39 @@ These scripts have been developed and tested with Python 3.12, and it is recomme
 
 > **NOTE:** Instructions below are for Linux operating systems. For information on how to create a virtual environment on Windows, please refer to [the official Python documentation](https://python.land/virtual-environments/virtualenv#How_to_create_a_Python_venv).
 
-Create a new virtual environment. This example uses `n_venv` as the environment name:
+To create a new development environment using a virtual Python environment run the steps listed below. This example uses `n_venv` as the environment name.
+
+1. Create the virtual Python environment.
 ```
 python3 -m venv n_venv
 ```
 
-Activate the environment.
+2. Activate the environment.
 ```
 source n_venv/bin/activate
 ```
 
-Install the dependencies.
+3. Install dependencies.
 ```
 pip install -r requirements.txt
 ```
 
-Add source code directories of this repository to `PYTHONPATH`.
+4. Add source code directories of this repository to `PYTHONPATH`.
 ```
 export PYTHONPATH="${PYTHONPATH}:$(pwd):$(pwd)/examples/nerve-clt"
 ```
 
-Check if everything works as intended.
+5. Check if everything works as intended.
 ```
 python examples/nerve-clt/nerve_clt --help
 ```
 
-When you are done you can deactivate the environment.
+6. When you are done you can deactivate the environment.
 ```
 deactivate
 ```
+
+Steps 4 to 6 must be repeated whenever you log out or reboot your system.
 
 ## Packaging
 The Nerve Management System API Python bindings can be packaged as Python wheel for easier installation. To create the **.whl* file run
